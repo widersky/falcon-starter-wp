@@ -7,6 +7,7 @@ module.exports = {
     // https://tailwindcss.com/docs/content-configuration
     `./wp-content/themes/${themeName}/*.php`,
     `./wp-content/themes/${themeName}/inc/**/*.php`,
+    `./wp-content/themes/${themeName}/framework/**/*.php`,
     `./wp-content/themes/${themeName}/templates/**/*.php`,
     `./wp-content/themes/${themeName}/safelist.txt`
   ],

@@ -7,16 +7,24 @@
   const IS_VITE_DEVELOPMENT = true;
   const SHOW_SECTIONS_DATA = false;
 
+  // Load Falcon classes
   require get_template_directory () . '/framework/classes/AssetsLoader.Class.php';
   require get_template_directory () . '/framework/classes/Customizer.Class.php';
   require get_template_directory () . '/framework/classes/Utils.Class.php';
   require get_template_directory () . '/framework/classes/Falcon.Class.php';
   require get_template_directory () . '/framework/classes/PageBuilder.Class.php';
   require get_template_directory () . '/framework/classes/Helpers.Class.php';
+  require get_template_directory () . '/framework/classes/Section.Class.php';
 
   $falcon = new Falcon();
   $customize = new Customizer();
   $assets = new AssetsLoader();
+
+  // Load sections
+  $section = new Section();
+  $section -> register('example');
+  $section -> register('hero_slider');
+  $section -> load_all();
 
   // Load Falcon foundation
   $falcon -> load_textdomain();
