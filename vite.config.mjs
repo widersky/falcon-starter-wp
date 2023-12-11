@@ -1,7 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import liveReload from 'vite-plugin-live-reload';
-const { resolve } = require('path');
-const fs = require('fs');
+import path, { resolve } from 'path';
+import fs from 'fs';
 
 export default ({ mode }) => {
   process.env = {...process.env, ...loadEnv(mode, process.cwd())};
@@ -9,14 +9,20 @@ export default ({ mode }) => {
   const themeName = process.env.VITE_THEME_NAME;
   const pathToTheme = __dirname + '/wp-content/themes/' + themeName;
 
+  console.log(`Theme name: ${themeName}`);
+  console.log(`Path to theme: ${pathToTheme}`);
+
   return defineConfig({
     plugins: [
-      liveReload(pathToTheme + '/**/*.php')
+      liveReload([
+        pathToTheme + '/**/*.php',
+        pathToTheme + '/**/*.css',
+      ])
     ],
 
     root: '',
     base: process.env.NODE_ENV === 'development'
-      ? pathToTheme + '/'
+      ? ''
       : pathToTheme + '/dist/',
 
     build: {
@@ -41,7 +47,6 @@ export default ({ mode }) => {
       hmr: {
         host: 'localhost',
       },
-
     },
   });
 }

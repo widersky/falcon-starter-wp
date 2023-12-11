@@ -5,7 +5,7 @@
     exit;
 
   const IS_VITE_DEVELOPMENT = true;
-  const SHOW_SECTIONS_DATA = false;
+  const SHOW_SECTIONS_DATA = true;
 
   // Load Falcon classes
   require get_template_directory () . '/framework/classes/AssetsLoader.Class.php';
@@ -19,9 +19,9 @@
   $falcon = new Falcon();
   $customize = new Customizer();
   $assets = new AssetsLoader();
+  $section = new Section();
 
   // Load sections
-  $section = new Section();
   $section -> register('example');
   $section -> register('hero_slider');
   $section -> load_all();
@@ -45,7 +45,7 @@
   $customize -> disable_versions_in_assets();
   $customize -> move_scripts_to_footer();
 
-  // Enable extrsa supports
+  // Enable extra supports
   $customize -> enable_wp_feature( 'title-tag' );
   $customize -> enable_wp_feature( 'post-thumbnails' );
 
